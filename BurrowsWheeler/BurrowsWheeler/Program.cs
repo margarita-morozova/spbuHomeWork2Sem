@@ -23,17 +23,32 @@ namespace BurrowsWheeler
             {
                 Console.WriteLine("Введите строку для преобразования: ");
                 var stringForTransformation = Console.ReadLine();
+                while (String.IsNullOrWhiteSpace(stringForTransformation) || stringForTransformation.Length == 1)
+                {
+                    Console.WriteLine("Строка пустая или состоит из одного символа\n" +
+                        "Введите строку для обратного преобразования: ");
+                    stringForTransformation = Console.ReadLine();
+                }
+
                 var indexOfTheOriginalString = 0;
                 var resultString = BurrowsWheelerTransform(stringForTransformation, out indexOfTheOriginalString);
+                indexOfTheOriginalString++;
                 Console.WriteLine($"Строка после преобразования: {resultString}, позиция конца строки: {indexOfTheOriginalString}.");
             }
             else if (choice == 1)
             {
                 Console.WriteLine("Введите строку для обратного преобразования: ");
-                var stringForTransformation = Console.ReadLine();
+                string stringForTransformation = Console.ReadLine();
+                while (String.IsNullOrWhiteSpace(stringForTransformation) || stringForTransformation.Length == 1)
+                {
+                    Console.WriteLine("Строка пустая или состоит из одного символа\n" +
+                        "Введите строку для обратного преобразования: ");
+                    stringForTransformation = Console.ReadLine();
+                }
+
                 Console.WriteLine("Введите позицию конца строки: ");
-                var positionOfTheLastChar = Convert.ToInt32(Console.ReadLine());
-                var resultString = ReverseBWT(stringForTransformation, positionOfTheLastChar);
+                var positionOfTheLastString = Convert.ToInt32(Console.ReadLine());
+                var resultString = ReverseBWT(stringForTransformation, positionOfTheLastString);
                 Console.WriteLine($"Строка после обратного преобразования: {resultString}");
             }
         }
